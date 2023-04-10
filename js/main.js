@@ -17,21 +17,22 @@ data.results.forEach((elem,index)=>{
     // *создаем карточки
     // * вызывем функцию, и отображем подробную информацию о конкретном покемоне
     app.innerHTML +=`
+    
     <li onclick = "getPokemonInfo(${index})" class="pocemon-list">
     <p>${data.name}</p>
-    <img style="width: 150px;
+    <img onmouseenter = "getSound ()" style="width: 150px;
     height: 150px;" src = "${data.sprites.front_default}" alt="${data.name}"
     </li>
     `;
-    let li = document.querySelectorAll("li");
-    // добавляем обработчика события mouseenter к каждому элементу списка. Когда мышь наводится на элемент, воспроизводится звук.
-    li.forEach((li) => {
-      li.addEventListener("mouseenter", () => {
-        let sound = document.getElementById("Sound");
-        sound.play();
-      }, false);
-    });
-
+    // let lis = document.getElementsByClassName('.pokemon-list');
+    // // добавляем обработчика события mouseenter к каждому элементу списка. Когда мышь наводится на элемент, воспроизводится звук.
+    // lis.forEach((e) => {
+    //   e.addEventListener("mouseenter", () => {
+    //     let sound = document.getElementById("audio");
+    //     sound.play();
+    //   }, false);
+    // });
+    
   }))
 });
 }
@@ -69,6 +70,14 @@ btn.addEventListener("click", ()=>{
 
 // вызываем функцию
 pocemonProfile(); 
+let lis = document.getElementsByClassName('.pokemon-list');
+// функция для вызова звука
+function getSound () {
+        let sound = document.getElementById("audio");
+        sound.play();
+    
+}
+
 // !----------pagination-------
 
 let btnPrev = document.querySelector('#btn-prev');
